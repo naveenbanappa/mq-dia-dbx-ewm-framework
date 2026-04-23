@@ -1,0 +1,42 @@
+{
+  "table_name": "mq_gmdf_dp_poc.kafka_ewm_poc.ewm_ddl_ext",
+  "domain": "EWM",
+  "description": "Governed EWM interface logs with flattened payload attributes",
+  "schema_version": 1,
+  "columns": [
+    { "name": "lgnum", "type": "string", "source_mapping": "ATOMIC.Lgnum" },
+    { "name": "intf_sys", "type": "string", "source_mapping": "ATOMIC.IntfSys" },
+    { "name": "sender", "type": "string", "source_mapping": "ATOMIC.Sender" },
+    { "name": "receiver", "type": "string", "source_mapping": "ATOMIC.Receiver" },
+    { "name": "direction", "type": "string", "source_mapping": "ATOMIC.Direction" },
+    { "name": "msg_type", "type": "string", "source_mapping": "ATOMIC.MsgType" },
+    { "name": "run_id", "type": "string", "source_mapping": "ATOMIC.RunId" },
+    { "name": "status", "type": "string", "source_mapping": "ATOMIC.Status" },
+
+    { "name": "ReqPayload", "type": "string", "source_mapping": "ATOMIC.ReqPayload" },
+    { "name": "RespPayload", "type": "string", "source_mapping": "ATOMIC.RespPayload" },
+
+    { "name": "req_clientId", "type": "string", "source_mapping": "JSON.ReqPayload.clientId" },
+    { "name": "req_wareHouseTaskId", "type": "string", "source_mapping": "JSON.ReqPayload.wareHouseTaskId" },
+    { "name": "req_loadUnitId", "type": "string", "source_mapping": "JSON.ReqPayload.loadUnitId" },
+    { "name": "req_destinationId", "type": "string", "source_mapping": "JSON.ReqPayload.destinationId" },
+    { "name": "req_userId", "type": "string", "source_mapping": "JSON.ReqPayload.userId" },
+    { "name": "req_sourceId", "type": "string", "source_mapping": "JSON.ReqPayload.sourceId" },
+    { "name": "req_storage_type", "type": "string", "source_mapping": "JSON.ReqPayload.storageType" },
+    { "name": "req_velocity_classification", "type": "string", "source_mapping": "JSON.ReqPayload.velocityClassification" },
+    { "name": "req_priority", "type": "string", "source_mapping": "JSON.ReqPayload.priority" },
+    { "name": "req_batch", "type": "string", "source_mapping": "JSON.ReqPayload.batch" },
+    { "name": "req_sku_id", "type": "string", "source_mapping": "JSON.ReqPayload.skuId" },
+    { "name": "req_qty", "type": "string", "source_mapping": "JSON.ReqPayload.qty" },
+
+    { "name": "resp_messageKey", "type": "string", "source_mapping": "JSON.RespPayload.messageKey" },
+    { "name": "resp_messageText", "type": "string", "source_mapping": "JSON.RespPayload.messageText" },
+
+    { "name": "meta_filePath", "type": "string", "source_mapping": "STRUCT.__metadata.file_path" },
+    { "name": "meta_fileSize", "type": "long", "source_mapping": "STRUCT.__metadata.file_size" },
+    { "name": "meta_fileModTime", "type": "timestamp", "source_mapping": "STRUCT.__metadata.file_modification_time" },
+
+    { "name": "ingest_ts", "type": "timestamp", "source_mapping": "PIPELINE.ingest_ts" },
+    { "name": "schema_version_applied", "type": "int", "source_mapping": "PIPELINE.schema_version" }
+  ]
+}
