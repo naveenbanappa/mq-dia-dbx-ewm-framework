@@ -108,9 +108,9 @@ The following table summarizes all the architectural components used:
 |***ewm\_ddl\_schema\_activator***|Databricks Batch Job|Job A: Reads DDL, syncs schema, and activates new version.|
 |***ewm\_streaming\_job***|Databricks Streaming Job|Job B: Continuously ingests data based on the active schema.|
 |***ewm\_backfill\_processor***|Databricks Batch Job|Backfill Job: Corrects historical data after a schema change.|
-|***activate\_schema.ipynb***|Databricks Notebook|GitHub: `job_a_activate_schema.txt`|
-|***ewm\_streaming\_job.ipynb***|Databricks Notebook|GitHub: `job_b_ewm_streaming.txt`|
-|***backfill\_processor.ipynb***|Databricks Notebook|GitHub: `job_backfill.txt`|
+|***activate\_schema.ipynb***|Databricks Notebook|GitHub folder: `notebooks/`|
+|***ewm\_streaming\_job.ipynb***|Databricks Notebook|GitHub folder: `notebooks/`|
+|***backfill\_processor.ipynb***|Databricks Notebook|GitHub folder: `notebooks/`|
 
 <br/>
 
