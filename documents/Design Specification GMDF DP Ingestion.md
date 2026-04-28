@@ -48,7 +48,7 @@ The following acronyms are used:
 |**DDL**|Data Definition Language|
 |**UC**|Unity Catalog|
 |**ADLS**|Azure Data Lake Storage|
-|**GMDF-DP**|Global Manufacturing Data Fabric - Digital Plant|
+|**GMDF-DP**|Global Manufacturing Data Fabric - Data Platform|
 
 <br/>
 
