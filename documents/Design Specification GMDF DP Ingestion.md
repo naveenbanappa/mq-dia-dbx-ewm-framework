@@ -94,7 +94,7 @@ MQ Data Integration Analytics (DIA) is responsible for all aspects of the extrac
 
 The Figure 1 below shows how the DDL-driven framework is structured in terms of architectural layers and how the components interact.
 
-![](images/figure1.jpg)
+![](images/architecture.jpg)
 **Figure 1**
 
 The architecture involves the usage of multiple components to schedule and manage the data loading and schema evolution process. A key feature of the framework is that all components are designed to be generic and reusable, driven by configuration and DDL files.
