@@ -4,77 +4,35 @@
   "description": "Governed EWM interface logs with flattened payload attributes",
   "schema_version": 2,
   "columns": [
-    /* ============================================================
-       ATOMIC COLUMNS (from source root)
-       source_mapping: "ATOMIC.<source_column_name>"
-       ============================================================ */
-    { "name": "lgnum",                     "type": "string", "source_mapping": "ATOMIC.Lgnum"},
-    { "name": "intf_sys",                  "type": "string", "source_mapping": "ATOMIC.IntfSys"},
-    { "name": "sender",                    "type": "string", "source_mapping": "ATOMIC.Sender"},
-    { "name": "receiver",                  "type": "string", "source_mapping": "ATOMIC.Receiver"},
-    { "name": "direction",                 "type": "string", "source_mapping": "ATOMIC.Direction"},
-    { "name": "msg_type",                  "type": "string", "source_mapping": "ATOMIC.MsgType"},
-    { "name": "run_id",                    "type": "string", "source_mapping": "ATOMIC.RunId"},
-    { "name": "status",                    "type": "string", "source_mapping": "ATOMIC.Status"},
-
-    /* ============================================================
-       RAW JSON COLUMNS (preserved for backfill & debugging)
-       ============================================================ */
-    { "name": "ReqPayload",                "type": "string", "source_mapping": "ATOMIC.ReqPayload"},
-    { "name": "RespPayload",               "type": "string", "source_mapping": "ATOMIC.RespPayload"},
-
-    /* ============================================================
-       UNPACKED ReqPayload
-       source_mapping: "JSON.<source_json_column>.<path.to.field>"
-       ============================================================ */
-    { "name": "req_clientId",              "type": "string", "source_mapping": "JSON.ReqPayload.clientId"},
-    { "name": "req_wareHouseTaskId",       "type": "string", "source_mapping": "JSON.ReqPayload.wareHouseTaskId"},
-    { "name": "req_loadUnitId",            "type": "string", "source_mapping": "JSON.ReqPayload.loadUnitId"},
-    { "name": "req_destinationId",         "type": "string", "source_mapping": "JSON.ReqPayload.destinationId"},
-    { "name": "req_userId",                "type": "string", "source_mapping": "JSON.ReqPayload.userId"},
-    { "name": "req_sourceId",              "type": "string", "source_mapping": "JSON.ReqPayload.sourceId"},
-    { "name": "req_storage_type",          "type": "string", "source_mapping": "JSON.ReqPayload.storageType"},
+    { "name": "lgnum", "type": "string", "source_mapping": "ATOMIC.Lgnum"},
+    { "name": "intf_sys", "type": "string", "source_mapping": "ATOMIC.IntfSys"},
+    { "name": "sender", "type": "string", "source_mapping": "ATOMIC.Sender"},
+    { "name": "receiver", "type": "string", "source_mapping": "ATOMIC.Receiver"},
+    { "name": "direction", "type": "string", "source_mapping": "ATOMIC.Direction"},
+    { "name": "msg_type", "type": "string", "source_mapping": "ATOMIC.MsgType"},
+    { "name": "run_id", "type": "string", "source_mapping": "ATOMIC.RunId"},
+    { "name": "status", "type": "string", "source_mapping": "ATOMIC.Status"},
+    { "name": "ReqPayload", "type": "string", "source_mapping": "ATOMIC.ReqPayload"},
+    { "name": "RespPayload", "type": "string", "source_mapping": "ATOMIC.RespPayload"},
+    { "name": "req_clientId", "type": "string", "source_mapping": "JSON.ReqPayload.clientId"},
+    { "name": "req_wareHouseTaskId", "type": "string", "source_mapping": "JSON.ReqPayload.wareHouseTaskId"},
+    { "name": "req_loadUnitId", "type": "string", "source_mapping": "JSON.ReqPayload.loadUnitId"},
+    { "name": "req_destinationId", "type": "string", "source_mapping": "JSON.ReqPayload.destinationId"},
+    { "name": "req_userId", "type": "string", "source_mapping": "JSON.ReqPayload.userId"},
+    { "name": "req_sourceId", "type": "string", "source_mapping": "JSON.ReqPayload.sourceId"},
+    { "name": "req_storage_type", "type": "string", "source_mapping": "JSON.ReqPayload.storageType"},
     { "name": "req_velocity_classification", "type": "string", "source_mapping": "JSON.ReqPayload.velocityClassification"},
-    { "name": "req_priority",              "type": "string", "source_mapping": "JSON.ReqPayload.priority"},
-    { "name": "req_batch",                 "type": "string", "source_mapping": "JSON.ReqPayload.batch"},
-    { "name": "req_sku_id",                "type": "string", "source_mapping": "JSON.ReqPayload.skuId"},
-    { "name": "req_qty",                   "type": "string", "source_mapping": "JSON.ReqPayload.qty"},
-
-    /* ============================================================
-       UNPACKED RespPayload
-       ============================================================ */
-    { "name": "resp_messageKey",           "type": "string", "source_mapping": "JSON.RespPayload.messageKey"},
-    { "name": "resp_messageText",          "type": "string", "source_mapping": "JSON.RespPayload.messageText"},
-
-    /* ============================================================
-       UNPACKED __metadata (Auto Loader)
-       source_mapping: "STRUCT.<source_struct_column>.<path.to.field>"
-       ============================================================ */
-    { "name": "meta_filePath",             "type": "string",    "source_mapping": "STRUCT.__metadata.file_path"},
-    { "name": "meta_fileSize",             "type": "long",      "source_mapping": "STRUCT.__metadata.file_size"},
-    { "name": "meta_fileModTime",          "type": "timestamp", "source_mapping": "STRUCT.__metadata.file_modification_time"},
-
-    /* =================================================================
-       AUDIT & GOVERNANCE COLUMNS (added by stream, not by parsing)
-       These are required by the framework.
-       ================================================================= */
-    {
-      "name": "ingest_batch_id",
-      "type": "long",
-      "description": "The microbatch ID from the streaming job (Job B).",
-      "source_mapping": "PIPELINE_GENERATED"
-    },
-    {
-      "name": "loaded_timestamp",
-      "type": "timestamp",
-      "description": "The timestamp when the record was loaded by the pipeline (Job B).",
-      "source_mapping": "PIPELINE_GENERATED"
-    },
-    {
-      "name": "schema_hash_at_ingest",
-      "type": "string",
-      "description": "The schema hash used by the pipeline to ingest this record (Jobs B & C).",
-      "source_mapping": "PIPELINE_GENERATED"
-    }
+    { "name": "req_priority", "type": "string", "source_mapping": "JSON.ReqPayload.priority"},
+    { "name": "req_batch", "type": "string", "source_mapping": "JSON.ReqPayload.batch"},
+    { "name": "req_sku_id", "type": "string", "source_mapping": "JSON.ReqPayload.skuId"},
+    { "name": "req_qty", "type": "string", "source_mapping": "JSON.ReqPayload.qty"},
+    { "name": "resp_messageKey", "type": "string", "source_mapping": "JSON.RespPayload.messageKey"},
+    { "name": "resp_messageText", "type": "string", "source_mapping": "JSON.RespPayload.messageText"},
+    { "name": "meta_filePath", "type": "string", "source_mapping": "STRUCT.__metadata.file_path"},
+    { "name": "meta_fileSize", "type": "long", "source_mapping": "STRUCT.__metadata.file_size"},
+    { "name": "meta_fileModTime", "type": "timestamp", "source_mapping": "STRUCT.__metadata.file_modification_time"},
+    { "name": "ingest_batch_id", "type": "long", "description": "The microbatch ID from the streaming job (Job B).", "source_mapping": "PIPELINE_GENERATED"},
+    { "name": "loaded_timestamp", "type": "timestamp", "description": "The timestamp when the record was loaded by the pipeline (Job B).", "source_mapping": "PIPELINE_GENERATED"},
+    { "name": "schema_hash_at_ingest", "type": "string", "description": "The schema hash used by the pipeline to ingest this record (Jobs B & C).", "source_mapping": "PIPELINE_GENERATED"}
   ]
 }
