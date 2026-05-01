@@ -103,7 +103,7 @@ graph TD
     end
 
     subgraph Databricks
-        subgraph Control Plane (Delta Tables)
+        subgraph "Control Plane (Delta Tables)"
             CP1[schema_transition]
             CP2[schema_store_columns]
             CP3[job_a_execution_log]
