@@ -7,19 +7,29 @@ job_a:
   ddl_url: "https://raw.githubusercontent.com/naveenbanappa/mq-dia-dbx-ewm-framework/main/schemas/ewm_ddl_ext.json"
   source_data_path: "abfss://topics@mqosidevadls01.dfs.core.windows.net/ZMW_I_INTFLOGS_v2/"
   unique_id_column: "run_id"
-  triggering_event: "interactive_test"
+  triggering_event: "interactive_test_external"
 
 # -- Post-Activation Validation --
 job_a_validation:
-  # This must match the 'table_name' from the DDL file above.
+  # The full, three-part name of the table as it will exist in the metastore.
   target_table_name_full: "mq_gmdf_dp_poc.kafka_ewm_poc.ewm_ddl_ext"
 
+# -- Storage Locations --
+# This section is the single source of truth for all physical storage paths.
+storage:
+  # Base path for storing the physical data of external tables.
+  # The final path will be: {base_raw_path}/{table_name}
+  base_raw_path: "abfss://mq-gmdf-dp-poc@mqosidevadls01.dfs.core.windows.net/raw/"
+  
+  # Base path for storing the checkpoints for streaming jobs.
+  # The final path will be: {base_checkpoint_path}/{table_name}_stream
+  base_checkpoint_path: "abfss://mq-gmdf-dp-poc@mqosidevadls01.dfs.core.windows.net/checkpoints/"
+
 # -- Continuous Ingestion (Job B) & Validation (Job C) --
-# Placeholder for future job configurations
-job_b:
-  checkpoint_location_root: "/tmp/mq_job_b_checkpoints/"
-job_c:
-  # Add parameters for Job C later
+# These sections are placeholders for future job-specific parameters.
+# Path information is now derived exclusively from the 'storage' section above.
+job_b: {}
+job_c: {}
 
 # -- Shared Settings --
 # Schema for all control tables used by this pipeline's jobs
