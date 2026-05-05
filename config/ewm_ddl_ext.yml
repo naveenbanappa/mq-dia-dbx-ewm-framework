@@ -1,1 +1,26 @@
+# ===================================================================================
+# CONFIGURATION FOR THE 'ewm_ddl_ext' DATA PIPELINE
+# ===================================================================================
 
+# -- Job A: Schema Activator & Backfill --
+job_a:
+  ddl_url: "https://raw.githubusercontent.com/naveenbanappa/mq-dia-dbx-ewm-framework/main/schemas/ewm_ddl_ext.json"
+  source_data_path: "abfss://topics@mqosidevadls01.dfs.core.windows.net/ZMW_I_INTFLOGS_v2/"
+  unique_id_column: "run_id"
+  triggering_event: "interactive_test"
+
+# -- Post-Activation Validation --
+job_a_validation:
+  # This must match the 'table_name' from the DDL file above.
+  target_table_name_full: "mq_gmdf_dp_poc.kafka_ewm_poc.ewm_ddl_ext"
+
+# -- Continuous Ingestion (Job B) & Validation (Job C) --
+# Placeholder for future job configurations
+job_b:
+  checkpoint_location_root: "/tmp/mq_job_b_checkpoints/"
+job_c:
+  # Add parameters for Job C later
+
+# -- Shared Settings --
+# Schema for all control tables used by this pipeline's jobs
+control_table_schema: "mq_gmdf_dp_poc.metadata_ddl"
